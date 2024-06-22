@@ -126,12 +126,12 @@ namespace MazeChallenge.Shared
             }
         }
 
-        public static object GetLaserTrajectory(string[]fileContent)
+        public static MazeOutputDto? GetLaserTrajectory(string[]fileContent)
         {
             //get the file info into the mapConverter (InputToMap);
             Map map = InputToMap(fileContent);
             //if map is null return something to let the user know.
-            if (map == null) return "null map";
+            if (map == null) return null;
             //actual starting coordinates
             int x = map.X, y = map.Y;
             char orientation = map.Orientation;
@@ -157,7 +157,17 @@ namespace MazeChallenge.Shared
                 if (x < 0 || x >= map.Width || y < 0 || y >= map.Height)
                 {
                     //i need to find a better way to return the value before get into the negative but for know no idea.
-                    return (x < 0 ? 0 : x, y < 0 ? 0 : y, orientation);
+                    //return (x < 0 ? 0 : x, y < 0 ? 0 : y, orientation);
+                    return new MazeOutputDto()
+                    {
+                        Start_X = map.X,
+                        Start_Y = map.Y,
+                        Orientation = orientation,
+                        End_X = x < 0 ? 0 : x,
+                        End_Y = y < 0 ? 0 : y,
+                        Width = map.Width,
+                        Height = map.Height
+                    };
                 }
                 //check if the mirror exist on those coordinates
                 //we need to check if the mirror let us go through or not
@@ -174,6 +184,7 @@ namespace MazeChallenge.Shared
                     }
                 }
             }
+
         }
     }
 }
