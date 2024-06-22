@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeChallenge", "MazeChallenge\MazeChallenge.csproj", "{E26F46E4-138D-4029-875F-5346B2F59F41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeChallenge.Api", "MazeChallenge.Api\MazeChallenge.Api.csproj", "{8AEDA66C-3E2D-457A-8483-7873B686F406}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "MazeChallenge.AngularUI", "MazeChallenge.AngularUI\MazeChallenge.AngularUI.esproj", "{6EE3FC57-4D98-4D23-AA86-8F905E8AC583}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E26F46E4-138D-4029-875F-5346B2F59F41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E26F46E4-138D-4029-875F-5346B2F59F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E26F46E4-138D-4029-875F-5346B2F59F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E26F46E4-138D-4029-875F-5346B2F59F41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AEDA66C-3E2D-457A-8483-7873B686F406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AEDA66C-3E2D-457A-8483-7873B686F406}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AEDA66C-3E2D-457A-8483-7873B686F406}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AEDA66C-3E2D-457A-8483-7873B686F406}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EE3FC57-4D98-4D23-AA86-8F905E8AC583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EE3FC57-4D98-4D23-AA86-8F905E8AC583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EE3FC57-4D98-4D23-AA86-8F905E8AC583}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6EE3FC57-4D98-4D23-AA86-8F905E8AC583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE3FC57-4D98-4D23-AA86-8F905E8AC583}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EE3FC57-4D98-4D23-AA86-8F905E8AC583}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D24F49C8-5ADE-4ECD-9C68-341B40A015DB}
+	EndGlobalSection
+EndGlobal

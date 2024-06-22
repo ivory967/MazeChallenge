@@ -1,0 +1,6 @@
+@MazeChallenge.Api_HostAddress = http://localhost:5075
+
+GET {{MazeChallenge.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
