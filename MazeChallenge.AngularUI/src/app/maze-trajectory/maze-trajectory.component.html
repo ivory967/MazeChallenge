@@ -1,0 +1,15 @@
+<div>
+  <h1>Maze Solver</h1>
+  <form (submit)="GetLaserTrajectory()">
+    <textarea [(ngModel)]="inputText" name="inputText" rows="10" cols="50"></textarea>
+    <br>
+    <button type="submit">Solve Maze</button>
+  </form>
+
+  <div *ngIf="result">
+    <h2>Result</h2>
+    <p>Board Size: {{ result.width }} x {{ result.height }}</p>
+    <p>Laser Start: ({{ result.start_X }}, {{ result.start_Y }})</p>
+    <p>Laser Exit: ({{ result.end_X }}, {{ result.end_Y }}) {{ result.orientation }}</p>
+  </div>
+</div>

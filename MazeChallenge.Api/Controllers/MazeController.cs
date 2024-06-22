@@ -16,6 +16,7 @@ namespace MazeChallenge.Api.Controllers
             var getMap = Maze.InputToMap(inputText);
             return Ok(getMap);
         }
+        //has to set this as post to allow the string[] and has to use [fromBody]
         [HttpPost("GetLaserTrajectory")]
         public IActionResult GetLaserTrajectory([FromBody] string[] inputText)
         {
