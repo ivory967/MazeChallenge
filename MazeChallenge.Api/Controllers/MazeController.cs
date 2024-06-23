@@ -22,7 +22,7 @@ namespace MazeChallenge.Api.Controllers
         {
             var trajectory = Maze.GetLaserTrajectory(inputText);
             if (!trajectory.Success)
-                NotFound();
+                NotFound(trajectory);
 
             return Ok(trajectory.Data);
         }

@@ -211,6 +211,10 @@ namespace MazeChallenge.Shared
                     return new ResultDto { Success = false, Message ="Invalid coordenates" };
                 }
             }
+            if (fileContents.Where(a => a.Contains('"') || a.Contains('[') || a.Contains(']')).Any())
+            {
+                return new ResultDto { Success = false, Message = "Invalid character in file" };
+            }
             return new ResultDto { Success = true };
 
         }
