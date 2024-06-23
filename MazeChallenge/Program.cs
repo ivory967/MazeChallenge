@@ -1,11 +1,16 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using MazeChallenge.Properties;
 using MazeChallenge.Shared;
 using System.IO;
-method();
-void method()
+using System.Reflection;
+Launch();
+void Launch()
 {
 	//reading the text file to get the values
 	string[] filecontent = File.ReadAllLines("D:\\MazeTestCase2.txt");
+
+    //use this to read the file from resources, i had to look up for empty spaces when is from resources \n \r clean the rows.
+    string[] fileFromResources = Resources.MazeTestCase.Split(new[] {'\n','\r' },StringSplitOptions.RemoveEmptyEntries);
 
 	 //A Sample Text File
 		//1,0V
@@ -22,7 +27,7 @@ void method()
 	//assuming you have multiple maps we can shot more than one using this one. (note: if i have time i need to make this async)
 	//var exitvalues = Maze.GetLaserTrajectory(map);
 	//assuming you just one the information here is the method
-	var trajectory = Maze.GetLaserTrajectory(filecontent);
+	var trajectory = Maze.GetLaserTrajectory(fileFromResources);
 	if (!trajectory.Success || trajectory.Data==null) {
 		Console.WriteLine(trajectory.Message);
 		//save a log with the error?
