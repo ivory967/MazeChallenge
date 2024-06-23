@@ -1,15 +1,54 @@
-<div>
-  <h1>Laser Trajectory</h1>
-  <form (ngSubmit)="GetLaserTrajectory()">
-    <textarea [(ngModel)]="inputText" name="inputText" rows="10" cols="50"></textarea>
-    <br>
-    <button type="submit">Shot the Laser</button>>
-  </form>
 
-  <div>
-    <h2>Result</h2>
-    <p>Board Size: {{ result.width }} x {{ result.height }}</p>
-    <p>Laser Start: ({{ result.start_X }}, {{ result.start_Y }})</p>
-    <p>Laser Exit: ({{ result.end_X }}, {{ result.end_Y }}) {{ result.orientation }}</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laser Trajectory</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header text-center">
+            <h1>Laser Trajectory</h1>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="GetLaserTrajectory()">
+              <div class="form-group">
+                <label for="fileInput">Select File</label>
+                <input type="file" class="form-control-file" id="fileInput" (change)="onFileSelected($event)" />
+              </div>
+              <div class="form-group">
+                <label for="inputTextArea">Input Text</label>
+                <textarea [(ngModel)]="inputText" name="inputText" id="inputTextArea" class="form-control" rows="10" readonly></textarea>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Shot the Laser</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="card mt-4">
+          <div class="card-header text-center">
+            <h2>Result</h2>
+          </div>
+          <div class="card-body">
+            <p><strong>Board Size:</strong> {{ result.width }} x {{ result.height }}</p>
+            <p><strong>Laser Start:</strong> ({{ result.start_X }}, {{ result.start_Y }})</p>
+            <p><strong>Laser Exit:</strong> ({{ result.end_X }}, {{ result.end_Y }}) {{ result.orientation }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

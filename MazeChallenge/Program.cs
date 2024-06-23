@@ -6,7 +6,7 @@ using System.Reflection;
 Launch();
 void Launch()
 {
-	//reading the text file to get the values
+	//reading the text file to get the values (REMEMBER CHANGING THE PATH)
 	string[] filecontent = File.ReadAllLines("D:\\MazeTestCase2.txt");
 
     //use this to read the file from resources, i had to look up for empty spaces when is from resources \n \r clean the rows.

@@ -13,8 +13,25 @@ export class MazeTrajectoryComponent {
   constructor(private mazeService: MazeApiService) {
 
   }
+  //file selected will convert the file to the list of strings (inputText)
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+
+    if (input.files) {
+      const file = input.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.inputText = reader.result as string;
+        };
+        reader.readAsText(file);
+      }
+    }
+  }
+  //service call, some weirness happened here where some empty characters are read from the text file, thats why the replace occurs below
   GetLaserTrajectory() {
-      const inputArray = this.inputText.split('\n');
+    const inputArray = this.inputText.replace(/\r/g, '').split('\n')
       this.mazeService.GetLaserTrajectory(inputArray).subscribe(a => {
         this.result = a;
       });
