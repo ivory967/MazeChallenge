@@ -126,8 +126,11 @@ namespace MazeChallenge.Shared
             }
         }
 
-        public static MazeOutputDto? GetLaserTrajectory(string[]fileContent)
+        public static ResultDtoObject<MazeOutputDto> GetLaserTrajectory(string[]fileContent)
         {
+            var fielCheck = FileCheck(fileContent);
+            if (!fielCheck.Success)
+                return new ResultDtoObject<MazeOutputDto> { Success = false, Message = fielCheck.Message };
             //get the file info into the mapConverter (InputToMap);
             Map map = InputToMap(fileContent);
             //if map is null return something to let the user know.
@@ -158,15 +161,19 @@ namespace MazeChallenge.Shared
                 {
                     //i need to find a better way to return the value before get into the negative but for know no idea.
                     //return (x < 0 ? 0 : x, y < 0 ? 0 : y, orientation);
-                    return new MazeOutputDto()
+                    return new Shared.ResultDtoObject<MazeOutputDto>
                     {
-                        Start_X = map.X,
-                        Start_Y = map.Y,
-                        Orientation = orientation,
-                        End_X = x < 0 ? 0 : x,
-                        End_Y = y < 0 ? 0 : y,
-                        Width = map.Width,
-                        Height = map.Height
+                        Success = true,
+                        Data = new MazeOutputDto()
+                        {
+                            Start_X = map.X,
+                            Start_Y = map.Y,
+                            Orientation = orientation,
+                            End_X = x < 0 ? 0 : x,
+                            End_Y = y < 0 ? 0 : y,
+                            Width = map.Width,
+                            Height = map.Height
+                        }
                     };
                 }
                 //check if the mirror exist on those coordinates
@@ -184,6 +191,18 @@ namespace MazeChallenge.Shared
                     }
                 }
             }
+
+        }
+
+        private static ResultDto FileCheck(string[] fileContents)
+        {
+            //if the file doesnt contains the 3 br means the file is incomplete
+            if (fileContents.Where(a => a.Contains("--br--")).Count() != 3)
+            {
+                return new ResultDto { Success = false, Message = "Invalid text file" };
+            }
+
+            return new ResultDto { Success = true };
 
         }
     }

@@ -17,10 +17,6 @@ void method()
 		//--br--
 
 
-    if (filecontent.Where(a=>a.Contains("--br--")).Count()!=3)
-	{
-		Console.WriteLine("Invalid text file");
-	}
 	//if you only want the map use this. I keep it this way in case in the future there is a need to draw the map or have a map object.
 	//var map = Maze.InputToMap(filecontent);
 	//assuming you have multiple maps we can shot more than one using this one. (note: if i have time i need to make this async)

@@ -21,10 +21,10 @@ namespace MazeChallenge.Api.Controllers
         public IActionResult GetLaserTrajectory([FromBody] string[] inputText)
         {
             var trajectory = Maze.GetLaserTrajectory(inputText);
-            if (trajectory == null)
+            if (!trajectory.Success)
                 NotFound();
 
-            return Ok(trajectory);
+            return Ok(trajectory.Data);
         }
     }
 }

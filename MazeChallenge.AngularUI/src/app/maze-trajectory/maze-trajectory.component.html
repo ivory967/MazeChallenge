@@ -1,12 +1,12 @@
 <div>
-  <h1>Maze Solver</h1>
-  <form (submit)="GetLaserTrajectory()">
+  <h1>Laser Trajectory</h1>
+  <form (ngSubmit)="GetLaserTrajectory()">
     <textarea [(ngModel)]="inputText" name="inputText" rows="10" cols="50"></textarea>
     <br>
-    <button type="submit">Solve Maze</button>
+    <button type="submit">Shot the Laser</button>>
   </form>
 
-  <div *ngIf="result">
+  <div>
     <h2>Result</h2>
     <p>Board Size: {{ result.width }} x {{ result.height }}</p>
     <p>Laser Start: ({{ result.start_X }}, {{ result.start_Y }})</p>

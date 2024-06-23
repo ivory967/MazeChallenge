@@ -7,15 +7,16 @@ import { MazeApiService } from '../maze-api.service'
   styleUrl: './maze-trajectory.component.css'
 })
 export class MazeTrajectoryComponent {
-  inputText : string[] = [];
+  inputText : string = '';
   result: any;
 
   constructor(private mazeService: MazeApiService) {
 
   }
   GetLaserTrajectory() {
-    this.mazeService.GetLaserTrajectory(this.inputText).subscribe(a => {
-      this.result = a;
-    });
+      const inputArray = this.inputText.split('\n');
+      this.mazeService.GetLaserTrajectory(inputArray).subscribe(a => {
+        this.result = a;
+      });
   }
 }
