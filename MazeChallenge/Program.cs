@@ -23,17 +23,17 @@ void method()
 	//var exitvalues = Maze.GetLaserTrajectory(map);
 	//assuming you just one the information here is the method
 	var trajectory = Maze.GetLaserTrajectory(filecontent);
-	if (trajectory == null) {
-		Console.WriteLine("Error ocurred while processing your request");
+	if (!trajectory.Success || trajectory.Data==null) {
+		Console.WriteLine(trajectory.Message);
 		//save a log with the error?
 	}
 	else
 	{
-        var result = $"Dimensions of this board are {trajectory.Height} x {trajectory.Width} " +
+        var result = $"Dimensions of this board are {trajectory.Data.Height} x {trajectory.Data.Width} " +
 			Environment.NewLine +
-			$"start position of the laser is {trajectory.Start_X}-{trajectory.Start_Y} and Orientation is {trajectory.Orientation} " +
+			$"start position of the laser is {trajectory.Data.Start_X}-{trajectory.Data.Start_Y} and Orientation is {trajectory.Data.Orientation} " +
 			Environment.NewLine +
-			$"and exit point is {trajectory.End_X}-{trajectory.End_Y}";
+			$"and exit point is {trajectory.Data.End_X}-{trajectory.Data.End_Y}";
         Console.WriteLine(result);
     }
 

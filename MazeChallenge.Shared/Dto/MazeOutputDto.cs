@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MazeChallenge.Shared
+namespace MazeChallenge.Shared.Dto
 {
     public class MazeOutputDto
     {

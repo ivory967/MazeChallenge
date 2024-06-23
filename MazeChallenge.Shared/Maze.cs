@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MazeChallenge.Shared.Dto;
 using static MazeChallenge.Shared.Enumerables;
 
 namespace MazeChallenge.Shared
@@ -161,7 +162,7 @@ namespace MazeChallenge.Shared
                 {
                     //i need to find a better way to return the value before get into the negative but for know no idea.
                     //return (x < 0 ? 0 : x, y < 0 ? 0 : y, orientation);
-                    return new Shared.ResultDtoObject<MazeOutputDto>
+                    return new ResultDtoObject<MazeOutputDto>
                     {
                         Success = true,
                         Data = new MazeOutputDto()
@@ -196,12 +197,20 @@ namespace MazeChallenge.Shared
 
         private static ResultDto FileCheck(string[] fileContents)
         {
+            //use this to add as many possible validations for the file.
             //if the file doesnt contains the 3 br means the file is incomplete
             if (fileContents.Where(a => a.Contains("--br--")).Count() != 3)
             {
                 return new ResultDto { Success = false, Message = "Invalid text file" };
             }
-
+            //check for coordenates.
+            foreach (var item in fileContents)
+            {
+                if (item != "--br--" && item.Split(",").Count()<1)
+                {
+                    return new ResultDto { Success = false, Message ="Invalid coordenates" };
+                }
+            }
             return new ResultDto { Success = true };
 
         }
