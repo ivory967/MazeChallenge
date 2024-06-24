@@ -200,9 +200,8 @@ namespace MazeChallenge.Shared
             //use this to add as many possible validations for the file.
             //if the file doesnt contains the 3 br means the file is incomplete
             if (fileContents.Where(a => a.Contains("--br--")).Count() != 3)
-            {
                 return new ResultDto { Success = false, Message = "Invalid text file" };
-            }
+
             //check for coordenates.
             foreach (var item in fileContents)
             {
@@ -211,10 +210,31 @@ namespace MazeChallenge.Shared
                     return new ResultDto { Success = false, Message ="Invalid coordenates" };
                 }
             }
+            //check for random characters
             if (fileContents.Where(a => a.Contains('"') || a.Contains('[') || a.Contains(']')).Any())
-            {
                 return new ResultDto { Success = false, Message = "Invalid character in file" };
+            //if somehow is empty the list
+            if (fileContents.Count()<1)
+                return new ResultDto { Success = false, Message = "The file is empty" };
+
+            //if the orientation isnt correct
+            if (!fileContents[0].EndsWith("V") && !fileContents[0].EndsWith("H"))
+                return new ResultDto { Success = false, Message = "Missing starting orientation" };
+
+            //checking the mirrors by adding the getting the index of the --br-- then checking each coordenate
+            List<int> brIndexes = new List<int>();
+            for (int i = 0; i < fileContents.Length; i++)
+                if (fileContents[i] == "--br--")
+                    brIndexes.Add(i);
+            //if the coordinates doesnt match the possible values then return
+            for (int i = brIndexes[0]+1; i < brIndexes[1]; i++)
+            {
+                if (!fileContents[i].EndsWith("R") && !fileContents[i].EndsWith("L") && !fileContents[i].EndsWith("B"))
+                {
+                    return new ResultDto { Success = false, Message = "one mirror is incorrect" };
+                }
             }
+
             return new ResultDto { Success = true };
 
         }
